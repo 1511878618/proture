@@ -19,3 +19,17 @@ def splitName2Attribution(x):
     AAS = re.search(AAS_pattern, x).group() if re.search(AAS_pattern, x) else None
     SNP = re.search(SNP_pattern, x).group() if re.search(SNP_pattern, x) else None
     return ref, AAS, SNP
+
+
+def is_missense_mutant_at_HGVSp(HGVSp: str):
+    """
+    is_missense_mutant_at_HGVSp match HGVSp missense pattern return True
+
+    Args:
+        HGVSp (str): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    missense_mutant_HGVSp_pattern = r"p.[A-Za-z]+[0-9]+[A-Za-z]+"
+    return bool(re.search(missense_mutant_HGVSp_pattern, HGVSp))
